@@ -1,0 +1,34 @@
+body {
+    background-color: aquamarine;
+    color: blue;
+}
+
+header {
+    width: 100%;
+    font-size: 35px;
+    color: rgb(10, 10, 10);
+    background-size: cover;
+    background-color:brown;
+    text-align: center;
+    margin: 0; padding: 0;
+}
+
+nav li {
+    list-style: none;
+    display:inline-flex;
+    padding: 5px 50px;
+    background-color: rgba(103, 107, 109, 0.932);
+    opacity: 93%;
+    align-items: center;
+    border: 4px rgb(152, 86, 161) solid;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+}
