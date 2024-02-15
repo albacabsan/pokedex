@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport">
+        <title>Pokédex</title>
+    </head>
+
+    <header>
+        <h2>Pokédex</h2>
+        <link rel="stylesheet" href="css/style.css"/>
+    </header>
+
+    <body>
+        <label class="switch" id="DarkModetext" onclick="darkMode()" onclick="lightMode()">
+            <input type="radio">
+        </label>
+        <label class="switch" id="LightModetext" onclick="lightMode()">
+            <input type="checkbox">
+        </label>
+        <button onclick="darkMode()">Oscuro</button>
+        <button onclick="lightMode()">Claro</button>
+
+        <input type="text" id="searchInput" placeholder="Buscar Pokémon por nombre">
+    <ul id="pokemonList"></ul>
+
+    <script src="script.js"></script>
+        <div id="pokemon-details"></div>
+        <div class="grid-container" id="pokemon-grid">
+             <script src="index.js"></script>
+        </div>
+    </body>
+</html>

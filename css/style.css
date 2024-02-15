@@ -1,0 +1,112 @@
+body {
+    background-color:white;
+    color: rgb(9, 9, 9);
+    place-items: center;
+    text-align: center;
+}
+
+header {
+    font-family: Pokemon_Solid;
+    width: 100%;
+    font-size: 45px;
+    color: yellow;
+    -webkit-text-stroke: 1px blue;
+    background-size: cover;
+    background-color:rgb(224, 79, 79);
+    text-align: center;
+    margin: 0; padding: 0;
+}
+
+@font-face {
+    font-family: Pokemon_Solid;
+    src: url(Pokemon\ Solid.ttf) format('truetype')
+  }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #fbd460;
+    background: url("fondo.jpg");
+    padding: 40px;
+    margin: auto;
+    gap: 50px 50px;
+  }
+  
+  .grid-item {
+    /* background-color: rgb(43, 168, 137); */
+    background-color: rgb(183, 146, 45);
+    border-radius: 35px;
+    border: 6px rgb(70, 70, 71) solid;
+    box-shadow: 6px 6px 5px black;
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .grid-item:hover{
+    transform: scale(1.07);
+    cursor:pointer;
+  }
+  
+  @media only screen and (max-width: 1150px) {
+    .grid-container {
+      grid-template-columns: auto auto;
+    }
+  }
+
+  li:hover{
+    color: #fbd460;
+  }
+
+img{
+    width: 160px;
+    height: 160px;
+  }
+
+.dark-mode {
+    background-color: black;
+    color: white;
+  }
+  .light-mode {
+    background-color: white;
+    color: black;
+  }
+
+  button{
+    background-color: #515355;
+    color: rgb(247, 247, 247);
+  }
+
+  input {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    background-color: #a19f9f;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.tipo-fire {
+  background-color: #FF5733;
+}
+
+.tipo-water {
+  background-color: #3498DB;
+}
+.tipo-grass {
+  background-color: #0d8219;
+}
+
+.tipo-normal {
+  background-color: #788085;
+}
