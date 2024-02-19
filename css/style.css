@@ -10,7 +10,7 @@ header {
     width: 100%;
     font-size: 45px;
     color: yellow;
-    -webkit-text-stroke: 1px blue;
+    -webkit-text-stroke: 1.5px blue;
     background-size: cover;
     background-color:rgb(224, 79, 79);
     text-align: center;
@@ -26,7 +26,10 @@ header {
     display: grid;
     grid-template-columns: auto auto auto;
     background-color: #fbd460;
-    background: url("fondo.jpg");
+    background: url("Prueba5.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center 0;
     padding: 40px;
     margin: auto;
     gap: 50px 50px;
@@ -41,8 +44,10 @@ header {
     padding: 15px;
     font-size: 20px;
     text-align: center;
-    text-transform: uppercase;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .grid-item p::first-letter {
+    text-transform: uppercase;
   }
 
   .grid-item:hover{
@@ -109,4 +114,28 @@ li {
 
 .tipo-normal {
   background-color: #788085;
+}
+.pokemon-grid-noche{
+  display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #fbd460;
+    background: url("PruebaNoche.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center 0;
+    padding: 40px;
+    margin: auto;
+    gap: 50px 50px;
+}
+.pokemon-grid-dia {
+  display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #fbd460;
+    background: url("Prueba5.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center 0;
+    padding: 40px;
+    margin: auto;
+    gap: 50px 50px;
 }

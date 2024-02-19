@@ -1,12 +1,16 @@
 function darkMode() {
     var element = document.body;
+    var elementGrid = document.getElementById("pokemon-grid")
     var content = document.getElementById("DarkModetext");
     element.className = "dark-mode";
+    elementGrid.className = "pokemon-grid-noche"
   }
   function lightMode() {
     var element = document.body;
+    var elementGrid = document.getElementById("pokemon-grid")
     var content = document.getElementById("DarkModetext");
     element.className = "light-mode";
+    elementGrid.className = "pokemon-grid-dia"
   }
 
 
@@ -38,7 +42,7 @@ async function cargarData(){
         }
 
         const elemento1Element = document.createElement("p");
-        elemento1Element.textContent = pokemonData.types[0].type.name;
+        elemento1Element.textContent = traductorTipo(pokemonData.types[0].type.name);
         
         var idElement = document.createElement("p");
         idElement.textContent = (pokemonData.id).toString().padStart(3,'0');
@@ -50,7 +54,7 @@ async function cargarData(){
         gridItem.appendChild(elemento1Element);
         if (pokemonData.types.length>1) {
             const elemento2Element = document.createElement("p");
-            elemento2Element.textContent = pokemonData.types[1].type.name;
+            elemento2Element.textContent = traductorTipo(pokemonData.types[1].type.name);
             gridItem.appendChild(elemento2Element);
         }
 
@@ -98,6 +102,64 @@ async function getData(url){
 
 cargarData();
 
+function traductorTipo(elemento1Element) {
+  switch (elemento1Element) {
+    case "grass":
+      return "planta"
+      break;
+    case "bug":
+        return "bicho"
+        break;
+    case "dragon":
+        return "dragón"
+        break;
+    case "electric":
+        return "eléctrico"
+        break;
+    case "fighting":
+        return "lucha"
+        break;
+    case "fire":
+        return "fuego"
+        break;
+    case "flying":
+        return "volador"
+        break;
+    case "ghost":
+        return "fantasma"
+        break;
+    case "ground":
+        return "tierra"
+        break;
+    case "ice":
+        return "hielo"
+        break;
+    case "poison":
+        return "veneno"
+        break;
+    case "psychic":
+        return "psíquico"
+        break;
+    case "rock":
+        return "roca"
+        break;
+    case "steel":
+        return "acero"
+        break;
+    case "water":
+        return "agua"
+        break;
+    case "fairy":
+        return "hada"
+        break;
+    case "normal":
+        return "normal"
+        break;
+    default:
+      break;
+  }
+}
+
 // script.js
 const searchInput = document.getElementById('searchInput');
 const pokemonList = document.getElementById('pokemonList');
@@ -140,6 +202,7 @@ function displayPokemons(pokemons) {
             pokemonList.appendChild(listItem);
         });
     }
+    
 }
 
 
