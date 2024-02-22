@@ -23,7 +23,7 @@ async function getPokemonData(id) {
 async function cargarData(){
     const pokemonGrid = document.getElementById('pokemon-grid');
 
-      for (let i = 1; i <= 151; i++) {
+        for (let i = 1; i <= 151; i++) {
         const pokemonData = await getPokemonData(i);
 
         // Crear elemento para el Pokémon
@@ -78,7 +78,7 @@ async function obtenerDatosPokemon() {
         elementoPokemon.textContent = pokemon.name;
         elementoPokemon.classList.add(`tipo-${tipo}`);
 
-      });
+        });
     } catch (error) {
       console.error('Error al obtener datos de la PokéAPI:', error);
     }
@@ -103,10 +103,10 @@ async function getData(url){
 cargarData();
 
 function traductorTipo(elemento1Element) {
-  switch (elemento1Element) {
+switch (elemento1Element) {
     case "grass":
-      return "planta"
-      break;
+        return "planta"
+        break;
     case "bug":
         return "bicho"
         break;
@@ -156,8 +156,8 @@ function traductorTipo(elemento1Element) {
         return "normal"
         break;
     default:
-      break;
-  }
+    break;
+    }
 }
 
 // script.js
