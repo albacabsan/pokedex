@@ -27,9 +27,8 @@ nav li {
     font-weight: bold;
 }
 
-.grid-container {
+.pokemon-detail-container {
     display: inline-grid;
-    grid-template-columns: repeat(3);
     background-color: lightgrey;
     padding: 10px;
     text-align: center;

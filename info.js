@@ -1,44 +1,49 @@
-async function getPokemonData(id) {
-    const obj = await getData(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    console.log(obj);
-    return obj;
-  }
+// Obtén la ID del Pokémon de la URL
+const urlParams = new URLSearchParams(window.location.search);
+const pokemonId = urlParams.get('id');
 
-  async function loadData() {
-    const pokemonGrid = document.getElementById('pokemon-grid');
 
-    for (let i = 1; i <= 151; i++) {
-      const pokemonData = await getPokemonData(i);
-
-      // Crear elemento para el Pokémon
-      const gridItem = document.createElement("div");
-      gridItem.className = "grid-item";
-
-      const imageElement = document.createElement("img");
-      imageElement.src = pokemonData.sprites.other['official-artwork'].front_default;
-      imageElement.alt = pokemonData.name; 
-      console.log(pokemonData.types[0].type.name)
-
-      const nameElement = document.createElement("p");
-      nameElement.textContent = pokemonData.name;
-
-      const elemento1Element = document.createElement("h2");
-      elemento1Element.textContent = pokemonData.types[0].type.name;
-
-      gridItem.appendChild(imageElement);
-      gridItem.appendChild(nameElement);
-      gridItem.appendChild(elemento1Element);
-
-      // Agregar el elemento al contenedor de grid
-      pokemonGrid.appendChild(gridItem);
+// Función para obtener los detalles del Pokémon por su ID
+async function getPokemonDetailsById(pokemonId) {
+    try {
+        
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+        const pokemonData = await response.json();
+        return pokemonData;
+    } catch (error) {
+        console.error('Error al obtener los detalles del Pokémon:', error);
     }
-  }
+}
 
-  async function getData(url) {
-    const response = await fetch(url);
-    const json = await response.json();
-    return json;
-  }
+async function cargarDetallePokemon() {
+  try {
+    console.log(pokemonId);
+      // Obtener los datos del Pokémon específico usando su ID
+      const pokemonData = await getPokemonDetailsById(pokemonId);
 
-  // Llamar a la función para cargar datos al cargar la página
-  loadData();
+      // Mostrar los detalles del Pokémon en la página
+      const pokemonDetailContainer = document.getElementById('pokemon-detail-container');
+
+      const imageElement = document.createElement('img');
+      imageElement.src = pokemonData.sprites.other['official-artwork'].front_default;
+      pokemonDetailContainer.appendChild(imageElement);
+
+      const nameElement = document.createElement('p');
+      nameElement.textContent = pokemonData.name;
+      pokemonDetailContainer.appendChild(nameElement);
+      console.log(nameElement);
+
+      const typesElement = document.createElement('p');
+      typesElement.textContent = 'Tipos: ' + pokemonData.types.map(type => type.type.name).join(', ');
+      pokemonDetailContainer.appendChild(typesElement);
+      
+      // Agregar más detalles según sea necesario...
+
+  } catch (error) {
+      console.error('Error al cargar los detalles del Pokémon:', error);
+  }
+}
+
+
+// Llama a la función para mostrar los detalles del Pokémon
+cargarDetallePokemon();

@@ -29,17 +29,21 @@ async function cargarData(){
         // Crear elemento para el Pokémon
         const gridItem = document.createElement("div");
         gridItem.className = "grid-item";
+         // Agregar un atributo data-id con el ID del Pokémon
+        gridItem.setAttribute("data-id", pokemonData.id);
+
+         // Agregar controlador de eventos de clic para redireccionar a la página del Pokémon
+        gridItem.addEventListener("click", function() {
+            window.location.href = `info.html?id=${pokemonData.id}`;
+        });
+
 
         const imageElement = document.createElement("img");
         imageElement.src = pokemonData.sprites.other['official-artwork'].front_default;
-        imageElement.alt = pokemonData.name; 
         console.log(pokemonData.types[0].type.name)
 
-        const nameElement = document.createElement("h3");
+        const nameElement = document.createElement("p");
         nameElement.textContent = pokemonData.name;
-        function primeraMayusc(nameElement) {
-            return nameElement.charArt(0).toUpperCase()+nameElement.slice(1);
-        }
 
         const elemento1Element = document.createElement("p");
         elemento1Element.textContent = traductorTipo(pokemonData.types[0].type.name);
