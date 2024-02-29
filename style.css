@@ -116,7 +116,7 @@ li {
   background-color: #788085;
 }
 .pokemon-grid-noche{
-  display: grid;
+  display: inline-grid;
     grid-template-columns: auto auto auto;
     background-color: #fbd460;
     background: url("PruebaNoche.jpg");
@@ -128,7 +128,7 @@ li {
     gap: 50px 50px;
 }
 .pokemon-grid-dia {
-  display: grid;
+  display: inline-grid;
     grid-template-columns: auto auto auto;
     background-color: #fbd460;
     background: url("Prueba5.jpg");
