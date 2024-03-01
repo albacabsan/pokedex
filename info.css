@@ -36,7 +36,6 @@ header {
   }
   
   .grid-item {
-    /* background-color: rgb(43, 168, 137); */
     background-color: rgb(183, 146, 45);
     border-radius: 35px;
     border: 6px rgb(70, 70, 71) solid;
@@ -101,20 +100,6 @@ li {
     margin-bottom: 10px;
 }
 
-.tipo-fire {
-  background-color: #FF5733;
-}
-
-.tipo-water {
-  background-color: #3498DB;
-}
-.tipo-grass {
-  background-color: #0d8219;
-}
-
-.tipo-normal {
-  background-color: #788085;
-}
 .pokemon-grid-noche{
   display: inline-grid;
     grid-template-columns: auto auto auto;
