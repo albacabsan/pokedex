@@ -1,28 +1,37 @@
-function darkMode() {
-    var element = document.body;
-    var elementGrid = document.getElementById("pokemon-grid")
-    var content = document.getElementById("DarkModetext");
+// Funciones para poner modo oscuro o modo claro y que se guarde de forma local
+function modoOscuro() {
+    let element = document.body;
+    let elementGrid = document.getElementById("pokemon-grid");
     element.className = "dark-mode";
-    elementGrid.className = "pokemon-grid-noche"
+    elementGrid.className = "pokemon-grid-noche";
+    localStorage.setItem("modo", "oscuro");
   }
-  function lightMode() {
-    var element = document.body;
-    var elementGrid = document.getElementById("pokemon-grid")
-    var content = document.getElementById("DarkModetext");
+  function modoClaro() {
+    let element = document.body;
+    let elementGrid = document.getElementById("pokemon-grid");
     element.className = "light-mode";
-    elementGrid.className = "pokemon-grid-dia"
+    elementGrid.className = "pokemon-grid-dia";
+    localStorage.setItem("modo", "claro");
   }
 
+  const modo = localStorage.getItem("modo");
+  if (modo==="claro") {
+    modoClaro();
+  } else {
+    modoOscuro();
+  }
 
+// Función para obtener datos de la pokeapi
 async function getPokemonData(id) {
     const obj= await getData(`https://pokeapi.co/api/v2/pokemon/${id}`);
     console.log(obj);
     return obj;
 }
 
+// Función para cargar los datos de cada Pokemon
 async function cargarData(){
     const pokemonGrid = document.getElementById('pokemon-grid');
-
+        // For para recorrer los 151 pokemon
         for (let i = 1; i <= 151; i++) {
         const pokemonData = await getPokemonData(i);
 
@@ -47,8 +56,9 @@ async function cargarData(){
 
         const elemento1Element = document.createElement("p");
         elemento1Element.textContent = traductorTipo(pokemonData.types[0].type.name);
+        elemento1Element.classList.add(`tipo-${pokemonData.types[0].type.name}`);
         
-        var idElement = document.createElement("p");
+        let idElement = document.createElement("p");
         idElement.textContent = (pokemonData.id).toString().padStart(3,'0');
         
 
@@ -59,6 +69,7 @@ async function cargarData(){
         if (pokemonData.types.length>1) {
             const elemento2Element = document.createElement("p");
             elemento2Element.textContent = traductorTipo(pokemonData.types[1].type.name);
+            elemento2Element.classList.add(`tipo-${pokemonData.types[1].type.name}`);
             gridItem.appendChild(elemento2Element);
         }
 
@@ -67,36 +78,6 @@ async function cargarData(){
       }
 }
 
-// Supongamos que tienes una función para obtener los datos de la API
-async function obtenerDatosPokemon() {
-    try {
-      const respuesta = await fetch('https://pokeapi.co/api/v2/pokemon?limit=10');
-      const datos = await respuesta.json();
-      const pokemons = datos.results; // Array de objetos con nombres y URLs
-      // Itera sobre los pokemons y crea elementos HTML
-      pokemons.forEach(async (pokemon) => {
-        const respuestaDetalle = await fetch(pokemon.url);
-        const detalle = await respuestaDetalle.json();
-        const tipo = detalle.types[0].type.name; // Tipo del Pokémon
-        const elementoPokemon = document.createElement('li');
-        elementoPokemon.textContent = pokemon.name;
-        elementoPokemon.classList.add(`tipo-${tipo}`);
-
-        });
-    } catch (error) {
-      console.error('Error al obtener datos de la PokéAPI:', error);
-    }
-  }
-  
-  obtenerDatosPokemon();
-  
-
-async function getEvolutionChain(id){
-    const obj= await getData(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
-    const evolutionChainURL= obj.evolution_chain.url;
-    const evolutionChain= await getData(evolutionChainURL);
-    console.log(evolutionChain);
-}
 
 async function getData(url){
     const response = await fetch(url);
@@ -106,107 +87,120 @@ async function getData(url){
 
 cargarData();
 
+// Función que traduce los tipo de los Pokemon obtenidos desde la API
 function traductorTipo(elemento1Element) {
 switch (elemento1Element) {
     case "grass":
-        return "planta"
+        return "planta";
         break;
     case "bug":
-        return "bicho"
+        return "bicho";
         break;
     case "dragon":
-        return "dragón"
+        return "dragón";
         break;
     case "electric":
-        return "eléctrico"
+        return "eléctrico";
         break;
     case "fighting":
-        return "lucha"
+        return "lucha";
         break;
     case "fire":
-        return "fuego"
+        return "fuego";
         break;
     case "flying":
-        return "volador"
+        return "volador";
         break;
     case "ghost":
-        return "fantasma"
+        return "fantasma";
         break;
     case "ground":
-        return "tierra"
+        return "tierra";
         break;
     case "ice":
-        return "hielo"
+        return "hielo";
         break;
     case "poison":
-        return "veneno"
+        return "veneno";
         break;
     case "psychic":
-        return "psíquico"
+        return "psíquico";
         break;
     case "rock":
-        return "roca"
+        return "roca";
         break;
     case "steel":
-        return "acero"
+        return "acero";
         break;
     case "water":
-        return "agua"
+        return "agua";
         break;
     case "fairy":
-        return "hada"
+        return "hada";
         break;
     case "normal":
-        return "normal"
+        return "normal";
         break;
     default:
     break;
     }
 }
 
-// script.js
-const searchInput = document.getElementById('searchInput');
-const pokemonList = document.getElementById('pokemonList');
 
-// Obtener datos de la API de Pokémon (puedes usar fetch o axios)
-const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=151'; // Limitamos a los primeros 151 Pokémon
-fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-        const pokemons = data.results;
+// Función que muestra la lista de Pokémon filtrada por la busqueda
+async function ListaFiltrada(filtro) {
+    const pokemonGrid = document.getElementById('pokemon-grid');
+    pokemonGrid.innerHTML = '';
 
-        // Escuchar cambios en el input de búsqueda
-        searchInput.addEventListener('input', () => {
-            const searchText = searchInput.value.toLowerCase();
+    for (let i = 1; i <= 151; i++) {
+        const pokemonData = await getPokemonData(i);
 
-            // Filtrar la lista de Pokémon según el texto introducido
-            const filteredPokemons = pokemons.filter(pokemon =>
-                pokemon.name.toLowerCase().includes(searchText)
-            );
+        if (pokemonData.name.toLowerCase().includes(filtro.toLowerCase())) {
+            const gridItem = document.createElement("div");
+            gridItem.className = "grid-item";
+            gridItem.setAttribute("data-id", pokemonData.id);
 
-            // Mostrar solo los primeros 5 Pokémon
-            const slicedPokemons = filteredPokemons.slice(0, 5);
-            displayPokemons(slicedPokemons);
-        });
+            gridItem.addEventListener("click", function() {
+                window.location.href = `info.html?id=${pokemonData.id}`;
+            });
 
-        // Mostrar la lista inicial
-        displayPokemons([]);
-    })
-    .catch(error => console.error('Error al obtener datos de la API:', error));
+            const imageElement = document.createElement("img");
+            imageElement.src = pokemonData.sprites.other['official-artwork'].front_default;
 
-function displayPokemons(pokemons) {
-    pokemonList.innerHTML = '';
+            const nameElement = document.createElement("p");
+            nameElement.textContent = pokemonData.name;
 
-    if (pokemons.length === 0) {
-        pokemonList.innerHTML = '<p>No se encontraron coincidencias.</p>';
-    } else {
-        pokemons.forEach(pokemon => {
-            const listItem = document.createElement('li');
-            listItem.textContent = pokemon.name;
-            pokemonList.appendChild(listItem);
-        });
+            const elemento1Element = document.createElement("p");
+            elemento1Element.textContent = traductorTipo(pokemonData.types[0].type.name);
+            elemento1Element.classList.add(`tipo-${pokemonData.types[0].type.name}`);
+
+            const idElement = document.createElement("p");
+            idElement.textContent = pokemonData.id.toString().padStart(3, '0');
+
+            gridItem.appendChild(imageElement);
+            gridItem.appendChild(idElement);
+            gridItem.appendChild(nameElement);
+            gridItem.appendChild(elemento1Element);
+
+            if (pokemonData.types.length > 1) {
+                const elemento2Element = document.createElement("p");
+                elemento2Element.textContent = traductorTipo(pokemonData.types[1].type.name);
+                elemento2Element.classList.add(`tipo-${pokemonData.types[1].type.name}`);
+                gridItem.appendChild(elemento2Element);
+            }
+
+            pokemonGrid.appendChild(gridItem);
+        } 
     }
-    
 }
+    // Búsqueda de pokemon con cadena de texto
+    const busqueda = document.getElementById('busqueda');
+    busqueda.addEventListener('input', () => {
+        const texto = busqueda.value;
+        ListaFiltrada(texto);
+    });
+
+
+ListaFiltrada();
 
 
