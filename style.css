@@ -36,6 +36,7 @@ header {
   }
   
   .grid-item {
+    /* background-color: rgb(43, 168, 137); */
     background-color: rgb(183, 146, 45);
     border-radius: 35px;
     border: 6px rgb(70, 70, 71) solid;
@@ -54,10 +55,15 @@ header {
     cursor:pointer;
   }
   
-  @media only screen and (max-width: 575px) {
-    .grid-container{
+  @media only screen and (max-width: 1150px) {
+    .grid-container {
       grid-template-columns: auto auto;
     }
+  }
+
+
+  li:hover{
+    color: #fbd460;
   }
 
 img{
@@ -86,6 +92,30 @@ img{
     margin-bottom: 20px;
 }
 
+ul {
+    list-style: none;
+    background-color: #a19f9f;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.tipo-fire {
+  background-color: #FF5733;
+}
+
+.tipo-water {
+  background-color: #3498DB;
+}
+.tipo-grass {
+  background-color: #0d8219;
+}
+
+.tipo-normal {
+  background-color: #788085;
+}
 .pokemon-grid-noche{
   display: inline-grid;
     grid-template-columns: auto auto auto;
@@ -110,80 +140,3 @@ img{
     margin: auto;
     gap: 50px 50px;
 }
-
-/* colores según el tipo de pokemon */
-.tipo-acero{
-  background-color: #60A2B9;
-}
-
-.tipo-agua{
-  background-color: #2481F0;
-}
-
-.tipo-bicho{
-  background-color: #92A212;
-}
-
-.tipo-dragon{
-  background-color: #4F60E2;
-}
-
-.tipo-eléctrico{
-  background-color: #FAC100;
-}
-
-.tipo-fantasma{
-  background-color: #713F71;
-}
-
-.tipo-fuego{
-  background-color: #E72324;
-}
-
-.tipo-hada{
-  background-color: #EF71F0;
-}
-
-.tipo-hielo{
-  background-color: #3DD9FF;
-}
-
-.tipo-lucha{
-  background-color: #FF8100;
-}
-
-.tipo-normal{
-  background-color: #A0A2A0;
-}
-
-.tipo-planta{
-  background-color: #3DA224;
-  border-radius: 100px;
-}
-
-.tipo-psíquico{
-  background-color: #EF3F7A;
-}
-
-.tipo-roca{
-  background-color: #B0AB82;
-}
-
-.tipo-siniestro{
-  background-color: #4F3F3D;
-}
-
-.tipo-tierra{
-  background-color: #92501B;
-}
-
-.tipo-veneno{
-  background-color: #923FCC;
-}
-
-.tipo-volador{
-  background-color: #82BAF0;
-}
-
-
-

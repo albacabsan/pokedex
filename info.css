@@ -1,40 +1,164 @@
 body {
-    background-color: white;
-    color: blue;
+    background-color:white;
+    color: rgb(9, 9, 9);
+    place-items: center;
+    text-align: center;
 }
 
 header {
+    font-family: Pokemon_Solid;
     width: 100%;
-    font-size: 35px;
-    color: rgb(10, 10, 10);
+    font-size: 45px;
+    color: yellow;
+    -webkit-text-stroke: 1.5px blue;
     background-size: cover;
-    background-color:brown;
+    background-color:rgb(224, 79, 79);
     text-align: center;
     margin: 0; padding: 0;
-    
 }
 
-nav li {
-    list-style: none;
-    display:inline-flex;
-    padding: 5px 50px;
-    background-color: rgba(103, 107, 109, 0.932);
-    opacity: 93%;
-    align-items: center;
-    border: 4px rgb(152, 86, 161) solid;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
-}
+@font-face {
+    font-family: Pokemon_Solid;
+    src: url(css/Pokemon\ Solid.ttf) format('truetype')
+  }
 
-.pokemon-detail-container {
-    display: inline-grid;
-    background-color: lightgrey;
-    padding: 10px;
+.grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    background-color: #fbd460;
+    background: url("css/Prueba5.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center 0;
+    padding: 40px;
+    margin: auto;
+    gap: 50px 50px;
+  }
+  
+  .grid-item {
+    /* background-color: rgb(43, 168, 137); */
+    background-color: rgb(183, 146, 45);
+    border-radius: 35px;
+    border: 6px rgb(70, 70, 71) solid;
+    box-shadow: 6px 6px 5px black;
+    padding: 15px;
+    font-size: 20px;
     text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .grid-item p::first-letter {
+    text-transform: uppercase;
+  }
 
-}
+  .grid-item:hover{
+    transform: scale(1.07);
+    cursor:pointer;
+  }
+  
+  @media only screen and (max-width: 1150px) {
+    .grid-container {
+      grid-template-columns: auto auto;
+    }
+  }
+
+  li:hover{
+    color: #fbd460;
+  }
+
 img{
-    height: 20px;
-    width: 20px;
+    width: 260px;
+    height: 260px;
+  }
+
+.dark-mode {
+    background-color: black;
+    color: white;
+  }
+  .light-mode {
+    background-color: white;
+    color: black;
+  }
+
+  button{
+    background-color: #515355;
+    color: rgb(247, 247, 247);
+  }
+
+  input {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    background-color: #a19f9f;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.tipo-fire {
+  background-color: #FF5733;
+}
+
+.tipo-water {
+  background-color: #3498DB;
+}
+.tipo-grass {
+  background-color: #0d8219;
+}
+
+.tipo-normal {
+  background-color: #788085;
+}
+.pokemon-grid-noche{
+  display: inline-grid;
+    grid-template-columns: auto auto auto;
+    background-color: #fbd460;
+    background: url("css/PruebaNoche.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center 0;
+    padding: 40px;
+    margin: auto;
+    gap: 50px 50px;
+}
+.pokemon-grid-dia {
+  display: inline-grid;
+    grid-template-columns: auto auto auto;
+    background-color: #fbd460;
+    background: url("css/Prueba5.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center 0;
+    padding: 40px;
+    margin: auto;
+    gap: 50px 50px;
+}
+#pokemon-detail-container{
+    background-color: rgb(183, 146, 45);
+    border-radius: 35px;
+    border: 6px rgb(70, 70, 71) solid;
+    box-shadow: 6px 6px 5px black;
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: center;
+}
+#pokemon-detail-container p::first-letter {
+    text-transform: uppercase;
+  }
+#cadena-evolutiva{
+    background-color: rgb(183, 146, 45);
+    border-radius: 35px;
+    border: 6px rgb(70, 70, 71) solid;
+    box-shadow: 6px 6px 5px black;
+    padding: 15px;
+    font-size: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
